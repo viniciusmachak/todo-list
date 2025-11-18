@@ -11,7 +11,7 @@ export class TasksService {
     return this.repository.create(dto);
   }
 
-  async findAll(query?: any) {
+  async findAll(query: { status?: string; priority?: string }) {
     return this.repository.findAll(query);
   }
 

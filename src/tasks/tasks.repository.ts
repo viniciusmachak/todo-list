@@ -11,14 +11,21 @@ export class TasksRepository {
     return this.prisma.task.create({ data });
   }
 
-  findAll(query?: any) {
+  findAll(query: { status?: string; priority?: string }) {
     const where: any = { isDeleted: false };
 
-    if (query?.status) where.status = query.status;
+    if (query.status) {
+      where.status = query.status;
+    }
 
-    if (query?.priority) where.priority = query.priority;
+    if (query.priority) {
+      where.priority = query.priority;
+    }
 
-    return this.prisma.task.findMany({ where, orderBy: { createdAt: 'desc' } });
+    return this.prisma.task.findMany({
+      where,
+      orderBy: { createdAt: 'desc' },
+    });
   }
 
   findOne(id: string) {

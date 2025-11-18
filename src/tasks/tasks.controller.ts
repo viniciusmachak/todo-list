@@ -22,8 +22,11 @@ export class TasksController {
   }
 
   @Get()
-  findAll(@Query() query: any) {
-    return this.service.findAll(query);
+  findAll(
+    @Query('status') status?: string,
+    @Query('priority') priority?: string,
+  ) {
+    return this.service.findAll({ status, priority });
   }
 
   @Get(':id')
