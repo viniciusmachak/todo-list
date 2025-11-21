@@ -32,7 +32,6 @@ Generate Prisma client:
 npx prisma generate
 ```
 
-``
 Run migrations:
 
 ```bash
@@ -84,6 +83,7 @@ deletedAt?: Date | null;
 ```
 
 🧾 API Endpoints
+
 ➤ POST /tasks
 
 Create a new task.
@@ -105,9 +105,12 @@ Request Body:
 Returns all tasks with optional filtering.
 
 Query parameters:
+
 Param Description
-status PENDING, IN_PROGRESS, COMPLETED, CANCELED
-priority LOW, MEDIUM, HIGH
+
+status: PENDING, IN_PROGRESS, COMPLETED, CANCELED
+
+priority: LOW, MEDIUM, HIGH
 
 Example:
 
