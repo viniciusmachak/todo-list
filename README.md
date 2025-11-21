@@ -1,98 +1,130 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 📘 Tasks API – Official Documentation
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+A RESTful API for managing tasks, built with **NestJS**, **Fastify**, **Prisma**
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🧱 Technologies Used
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- **Node.js**
+- **NestJS (Fastify adapter)**
+- **Prisma ORM**
+- **Swagger (OpenAPI 3)**
+- **Class-Validator / Class-Transformer**
+- **PostgreSQL**
+- **TypeScript**
 
-## Project setup
+---
+
+## 🚀 Running the Project
+
+### 1️⃣ Install dependencies
 
 ```bash
-$ npm install
+npm install
 ```
 
-## Compile and run the project
+2️⃣ Setup Prisma
+
+Generate Prisma client:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npx prisma generate
 ```
 
-## Run tests
+``
+Run migrations:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npx prisma migrate dev
 ```
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+3️⃣ Start the server
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+npm run start
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Development mode:
 
-## Resources
+```bash
+npm run start:dev
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+📄 Swagger Documentation
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+Once the server is running, access:
 
-## Support
+```bash
+http://localhost:3000/docs
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Swagger provides:
 
-## Stay in touch
+    Organized endpoints
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+    Automatic examples
 
-## License
+    DTO schemas
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+🗂️ Task Model
+
+```ts
+id: string;
+title: string;
+description?: string | null;
+priority: TaskPriority; // LOW, MEDIUM, HIGH
+status: TaskStatus; // PENDING, IN_PROGRESS, COMPLETED, CANCELED
+dueDate?: Date | null;
+isCompleted: boolean;
+isDeleted: boolean;
+createdAt: Date;
+updatedAt: Date;
+deletedAt?: Date | null;
+```
+
+🧾 API Endpoints
+➤ POST /tasks
+
+Create a new task.
+
+Request Body:
+
+```json
+{
+  "title": "Fix login bug",
+  "description": "Detailed explanation",
+  "priority": "MEDIUM",
+  "status": "PENDING",
+  "dueDate": "2025-04-01T10:00:00Z"
+}
+```
+
+➤ GET /tasks
+
+Returns all tasks with optional filtering.
+
+Query parameters:
+Param Description
+status PENDING, IN_PROGRESS, COMPLETED, CANCELED
+priority LOW, MEDIUM, HIGH
+
+Example:
+
+```bash
+/tasks?status=PENDING&priority=HIGH
+```
+
+➤ GET /tasks/:id
+
+Get a task by ID.
+
+➤ PUT /tasks/:id
+
+Update a task by ID.
+
+Body can contain any partial fields from UpdateTaskDto.
+
+➤ DELETE /tasks/:id
+
+Performs a soft delete (marks the task as deleted).
